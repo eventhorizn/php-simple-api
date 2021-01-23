@@ -17,9 +17,9 @@
             switch ($this->requestMethod) {
                 case 'GET':
                     if ($this->postId) {
-                    $response = $this->getPost($this->postId);
+                        $response = $this->getPost($this->postId);
                     } else {
-                    $response = $this->getAllPosts();
+                        $response = $this->getAllPosts();
                     };
                     break;
                 case 'POST':
@@ -48,7 +48,7 @@
                 SELECT
                     id, title, body, author, author_picture, created_at
                 FROM
-                    posts;
+                    post;
                 ";
 
             try {
@@ -85,7 +85,7 @@
             }
 
             $query = "
-                INSERT INTO posts
+                INSERT INTO post
                     (title, body, author, author_picture)
                 VALUES
                     (:title, :body, :author, :author_picture);
@@ -124,7 +124,7 @@
             }
 
             $statement = "
-                UPDATE posts
+                UPDATE post
                 SET
                     title = :title,
                     body  = :body,
@@ -163,7 +163,7 @@
             }
 
             $query = "
-                DELETE FROM posts
+                DELETE FROM post
                 WHERE id = :id;
                 ";
 
@@ -187,7 +187,7 @@
                 SELECT
                     id, title, body, author, author_picture, created_at
                 FROM
-                    posts
+                    post
                 WHERE id = :id;
                 ";
 

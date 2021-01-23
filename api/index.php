@@ -13,15 +13,12 @@
 
     // all of our endpoints start with /post or /posts
     // everything else results in a 404 Not Found
-    if ($uri[1] !== 'post' || $uri[1] !== 'posts') {
-        header("HTTP/1.1 404 Not Found");
-        exit();
-    }
+    if ($uri[1] !== 'post') {
 
-    // can only have a postId if endpoint is /post
-    if ($uri[1] == 'posts' and isset($uri[2])) {
-        header("HTTP/1.1 404 Not Found");
-        exit();
+        if($uri[1] !== 'posts'){
+            header("HTTP/1.1 404 Not Found");
+            exit();
+        }
     }
 
     // the post id is optional and must be a number
